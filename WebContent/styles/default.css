@@ -106,6 +106,6 @@ ul.zebra li:nth-child(odd):hover, ul.zebra li:nth-child(even):hover {
 	background-color: #ccff00;
 }
 footer {
-	align: center;
+	vertical-align: middle;
 	font-size: 0.7em
 }

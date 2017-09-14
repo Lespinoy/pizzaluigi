@@ -26,41 +26,41 @@ public class Persoon {
 	public void setVoornaam(String voornaam) {
 		this.voornaam = voornaam;
 	}
-
-	public String getFamilienaam() {
-		return familienaam;
-	}
-
+	
 	public void setFamilienaam(String familienaam) {
 		this.familienaam = familienaam;
+	}
+	
+	public void setAantalKinderen(int aantalKinderen) {
+		this.aantalKinderen = aantalKinderen;
+	}
+	
+	public void setGehuwd(boolean gehuwd) {
+		this.gehuwd = gehuwd;
+	}
+	
+	public void setAdres(Adres adres) {
+		this.adres = adres;
+	}
+	
+	public String getFamilienaam() {
+		return familienaam;
 	}
 
 	public int getAantalKinderen() {
 		return aantalKinderen;
 	}
 
-	public void setAantalKinderen(int aantalKinderen) {
-		this.aantalKinderen = aantalKinderen;
-	}
-
 	public boolean isGehuwd() {
 		return gehuwd;
 	}
 
-	public void setGehuwd(boolean gehuwd) {
-		this.gehuwd = gehuwd;
-	}
-	
 	public String getNaam(){
 		return voornaam + ' ' + familienaam; 
 	}
 
 	public Adres getAdres() {
 		return adres;
-	}
-
-	public void setAdres(Adres adres) {
-		this.adres = adres;
 	}
 
 }
