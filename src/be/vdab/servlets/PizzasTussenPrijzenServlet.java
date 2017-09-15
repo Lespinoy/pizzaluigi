@@ -14,10 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import be.vdab.repositories.PizzaRepository;
 import be.vdab.util.StringUtils;
 
-/**
- * Servlet implementation class PizzasTussenPrijzen
- */
-@WebServlet("/tussenprijzen.htm")
+@WebServlet("/pizzas/tussenprijzen.htm")
 public class PizzasTussenPrijzenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String VIEW = "/WEB-INF/JSP/pizzastussenprijzen.jsp";
