@@ -39,7 +39,7 @@ public class Pizza {
 		} else throw new IllegalArgumentException();
 	}
 		
-	private static boolean isPrijsValid(BigDecimal prijs){
+	public static boolean isPrijsValid(BigDecimal prijs){
 		return(prijs != null && prijs.compareTo(BigDecimal.ZERO) >= 0);
 	}
 		
