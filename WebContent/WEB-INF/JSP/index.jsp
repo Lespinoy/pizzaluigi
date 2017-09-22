@@ -1,7 +1,7 @@
 <!-- PIZZA LUIGI -->
 <%-- een Welkomstpagina --%>
 <%@page contentType='text/html' pageEncoding='UTF-8' session='false'%>
-<%@taglib prefix='c' uri="http://java.sun.com/jstl/core" %>
+<%@taglib prefix='fmt' uri='http://java.sun.com/jsp/jstl/fmt'%>
 <!doctype html>
 <html lang='nl'>
 <head>
@@ -27,6 +27,7 @@
 			${zaakvoerder.adres.postcode } ${zaakvoerder.adres.gemeente }
 		</dd>
 	</dl>
+<%-- 	<div>Vandaag: <fmt:formatDate value='${nu}'/></div> --%>
 </body>
 <footer><div >Webmaster:<a href='mailto:${emailAdresWebMaster }'>${emailAdresWebMaster}</a></div>
 <div >Deze pagina werdt ${aantalXBekeken} keer bekeken.</div></footer>

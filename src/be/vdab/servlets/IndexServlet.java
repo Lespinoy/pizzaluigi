@@ -1,6 +1,8 @@
 package be.vdab.servlets;
 
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.servlet.ServletException;
@@ -33,6 +35,8 @@ public class IndexServlet extends HttpServlet {
 		request.setAttribute("begroeting", new Begroeting());
 		request.getRequestDispatcher(VIEW).forward(request, response);
 		((AtomicInteger) this.getServletContext().getAttribute(INDEX_REQUESTS)).incrementAndGet();
+		Date nu = Calendar.getInstance().getTime();
+		request.setAttribute("nu", nu);
 	}
 	
 	@Override 

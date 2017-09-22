@@ -4,11 +4,13 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 
 import be.vdab.repositories.PizzaRepository;
 
@@ -21,6 +23,11 @@ public class VoorkeurPizzaServlet extends HttpServlet {
 	private static final String VIEW = "/WEB-INF/JSP/voorkeurpizzas.jsp";
 	private final PizzaRepository pizzaRepository = new PizzaRepository();
 	
+	@Resource(name = PizzaRepository.JDNI_NAME)
+	void setDataSource(DataSource dataSource){
+		pizzaRepository.setDataSource(dataSource);
+	}
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		request.setAttribute("pizzas", pizzaRepository.findAll());
 		if (request.getParameter("id") != null){

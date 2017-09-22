@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import javax.sql.DataSource;
 
 import be.vdab.entities.Pizza;
 import be.vdab.repositories.PizzaRepository;
@@ -26,8 +28,13 @@ public class PizzaToevoegenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String VIEW = "/WEB-INF/JSP/pizzatoevoegen.jsp";
 	private static final String REDIRECT_URL = "%s/pizzas.htm";
-	private final PizzaRepository pizzaRepository = new PizzaRepository();
+	private final transient PizzaRepository pizzaRepository = new PizzaRepository();
 
+	@Resource(name = PizzaRepository.JDNI_NAME)
+	void setDataSource(DataSource dataSource){
+		pizzaRepository.setDataSource(dataSource);
+	}
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -38,7 +45,6 @@ public class PizzaToevoegenServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.sendRedirect(response.encodeRedirectURL(String.format(REDIRECT_URL, request.getContextPath())));
-		request.setCharacterEncoding("UTF-8");
 		Map<String, String> fouten = new HashMap<>();
 		String naam = request.getParameter("naam");
 		if (!Pizza.isNaamValid(naam)) {
